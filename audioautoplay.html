@@ -34,7 +34,7 @@
     document.myaudiojs = videojs('myaudiojs');
     
     // Test automatic play / pause ....play does not work, but pause does (in iOS)
-    //setTimeout(function(){ document.myaudiojs.play() }, 6000);
+    setTimeout(function(){ document.myaudiojs.play() }, 6000);
     //setTimeout(function(){ document.myaudiojs.pause() }, 6000);
     
     $( document ).ready(function() {
@@ -57,7 +57,7 @@
        }
     }
     
-    getConfirmation();
+    //getConfirmation();
   </script>
   
   <input type="button" value="Play" onclick="document.myaudiojs.play()">
