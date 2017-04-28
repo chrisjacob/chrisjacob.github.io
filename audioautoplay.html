@@ -4,6 +4,8 @@
 
   <!-- If you'd like to support IE8 -->
   <script src="//vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -19,7 +21,7 @@
   -->
   
   
-  <h1>Audio should autoplay v10</h1>
+  <h1>Audio should autoplay v11</h1>
 <audio id="myaudiojs"
   src="https://mel0218idpuat.blob.core.windows.net/uploads/idp-admin/moduleassets/da734254-4b14-e711-80c2-0003ff85a46d/0c78d397-442a-e711-80c0-0003ff85b064/ieltslisteningtesttest4whole.mp3">
   Your browser does not support the <code>audio</code> element.
@@ -30,10 +32,22 @@
   <script>
     //document.myaudiojs = videojs('myaudiojs', {autoplay: true});
     document.myaudiojs = videojs('myaudiojs');
-    setTimeout(function(){ document.myaudiojs.play() }, 3000);
+    //setTimeout(function(){ document.myaudiojs.play() }, 3000);
+    
+$( document ).ready(function() {
+    $(document).on('foobar',function(){
+      document.myaudiojs.play()
+    });
+  
+    $('#foo').on('click', function(){
+      $(document).trigger('foobar');
+    });
+});
   </script>
   
   <input type="button" value="Play" onclick="document.myaudiojs.play()">
   <input type="button" value="Pause" onclick="document.myaudiojs.pause()">
+  <input id="foo" type="button" value="Foo" >
+
 </body>
 </html>
