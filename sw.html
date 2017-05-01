@@ -1,0 +1,55 @@
+<html>
+<head>
+<script>
+var t = this;
+navigator.serviceWorker.register("/rtpServiceWorker.js", {
+                    //scope: e
+                }).then(function(e) {
+                    if (e.installing) {
+                        console.log("Service worker installing");
+                        t.worker = e.installing;
+                        e.installing.onstatechange = function(r) {
+                            var i = r.target.state;
+                            console.log("reg.installing.onstatechange", i, e, r);
+                            "activated" === i && n.resolve(t.worker);
+                            "redundant" === i && n.reject("state: " + i)
+                        }
+                        ;
+                        e.installing.onerror = function(e) {
+                            n.reject(e)
+                        }
+                        ;
+                        t.freshInstall = !0
+                    } else if (e.waiting) {
+                        console.log("Service worker waiting");
+                        t.worker = e.waiting;
+                        e.waiting.onstatechange = function(t) {
+                            console.log("reg.waiting.onstatechange", t.target.state, e, t)
+                        }
+                        ;
+                        e.active.onerror = function(e) {
+                            n.reject(e)
+                        }
+                    } else if (e.active) {
+                        console.log("Service worker active");
+                        e.active.onstatechange = function(t) {
+                            console.log("reg.active.onstatechange", t.target.state, e, t)
+                        }
+                        ;
+                        e.active.onerror = function(e) {
+                            n.reject(e)
+                        }
+                        ;
+                        t.worker = e.active;
+                        n.resolve(t.worker)
+                    }
+                    t.$rootScope.$safeApply()
+                }).catch(function(e) {
+                    console.log("Registration failed with " + e);
+                    n.reject(e);
+                    t.$rootScope.$safeApply()
+                });
+</script>
+</head>
+<body>Tetsing SW</body>
+</html>
