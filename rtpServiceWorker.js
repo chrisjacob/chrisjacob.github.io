@@ -836,8 +836,8 @@ function getTP2StaticResources() {
         // '/app/testplayer/tools/audio/stimulus-audio-2x.png',
         // '/app/testplayer/tools/protractor/protractor-tool-1x.png',
         // '/app/testplayer/tools/protractor/protractor-tool-2x.png',
-        '/app/testplayer/tools/ruler/ruler-tool-2x.png',
-        '/app/testplayer/tools/ruler/ruler-tool-1x.png'
+        '/images/ruler-tool-2x.png',
+        '/images/ruler-tool-1x.png'
     ];
 }
 // function getMathJaxResources() {
