@@ -1,3 +1,4 @@
+/*
 var worker = this;
 //#region Debugging
 var DEBUG_ENABLED = false;
@@ -291,9 +292,9 @@ worker.addEventListener('install', function (event) {
         .open(RTP_CACHE_NAME)
         .then(function (cache) { return cache
         .addAll(tp2Resources)
-        /*.then(function () { return cache.add(mathjaxResources.shift())
-        .then(function () { return cache.addAll(mathjaxResources); })
-        .catch(function () { console.warn('Unable to prefetch mathjax.'); }); });*/ })
+        //.then(function () { return cache.add(mathjaxResources.shift())
+        //.then(function () { return cache.addAll(mathjaxResources); })
+        //.catch(function () { console.warn('Unable to prefetch mathjax.'); }); }); })
         .catch(function (err) {
         console.log('Failed to install SW!');
         console.log('cache.addAll error:', err);
@@ -1355,3 +1356,4 @@ function getTP2StaticResources() {
 //     ];
 // }
 // //# sourceMappingURL=rtpServiceWorker.js.map
+*/
