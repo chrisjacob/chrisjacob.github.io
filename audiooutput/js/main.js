@@ -8,35 +8,6 @@
 
 'use strict';
 
-function gotDevices(deviceInfos) {
-  var masterOutputSelector = document.createElement('select');
-
-  for (var i = 0; i !== deviceInfos.length; ++i) {
-    var deviceInfo = deviceInfos[i];
-    var option = document.createElement('option');
-    option.value = deviceInfo.deviceId;
-    if (deviceInfo.kind === 'audiooutput') {
-      console.info('Found audio output device: ', deviceInfo.label);
-      option.text = deviceInfo.label || 'speaker ' +
-          (masterOutputSelector.length + 1);
-      masterOutputSelector.appendChild(option);
-    } else {
-      console.log('Found non audio output device: ', deviceInfo.label);
-    }
-  }
-
-  // Clone the master outputSelector and replace outputSelector placeholders.
-  var allOutputSelectors = document.querySelectorAll('select');
-  for (var selector = 0; selector < allOutputSelectors.length; selector++) {
-    var newOutputSelector = masterOutputSelector.cloneNode(true);
-    newOutputSelector.addEventListener('change', changeAudioDestination);
-    allOutputSelectors[selector].parentNode.replaceChild(newOutputSelector,
-        allOutputSelectors[selector]);
-  }
-}
-
-navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
-
 // Attach audio output device to the provided media element using the deviceId.
 function attachSinkId(element, sinkId, outputSelector) {
   if (typeof element.sinkId !== 'undefined') {
@@ -60,30 +31,47 @@ function attachSinkId(element, sinkId, outputSelector) {
   }
 }
 
+function gotDevices(deviceInfos) {
+  var audioOutputSelector = document.getElementById('output');
+
+  for (var i = 0; i !== deviceInfos.length; ++i) {
+    var deviceInfo = deviceInfos[i];
+    var option = document.createElement('option');
+    option.value = deviceInfo.deviceId;
+    if (deviceInfo.kind === 'audiooutput') {
+      console.info('Found audio output device: ', deviceInfo.label);
+      option.text = deviceInfo.label || 'speaker ' + (audioOutputSelector.length + 1);
+      audioOutputSelector.appendChild(option);
+    } else {
+      console.log('Found non audio output device: ', deviceInfo.label);
+    }
+  }
+  
+  audioOutputSelector.addEventListener('change', changeAudioDestination);
+  
+  if (localStorage.getItem("output-device-id") !== null) {
+  	audioOutputSelector.value = localStorage.getItem("output-device-id");
+  	var element = document.getElementById('mp3');
+  	attachSinkId(element, localStorage.getItem("output-device-id"), audioOutputSelector);
+  }
+}
+
+navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
+
 function changeAudioDestination(event) {
   var deviceId = event.target.value;
+  localStorage.setItem("output-device-id", deviceId);
   var outputSelector = event.target;
-  // FIXME: Make the media element lookup dynamic.
-  var element = event.path[2].childNodes[1];
+  
+  var element = document.getElementById('mp3');
   attachSinkId(element, deviceId, outputSelector);
 }
 
-function gotStream(stream) {
-  //window.stream = stream; // make stream available to console
-}
-
 function start() {
-  if (window.stream) {
-    window.stream.getTracks().forEach(function(track) {
-      track.stop();
-    });
-  }
   var constraints = {
     audio: true,
     video: false
   };
-  navigator.mediaDevices.getUserMedia(constraints).
-      then(gotStream).catch(handleError);
 }
 
 start();
