@@ -179,6 +179,19 @@
      var s = document.getElementsByTagName('script')[0];
      s.parentNode.insertBefore(dc, s);
    })();
+
+
+// example.com?ref=123
+const queryString = window.location.search;
+console.log(queryString); // ?ref=123
+const urlParams = new URLSearchParams(queryString);
+const ref = urlParams.get('ref');
+console.log(ref); // 123
+const input = document.getElementById('SubscriberForm-Customz-52XpaiU49AuSxfYVQsyjzH');
+input.value = ref || '10XNetworkState';
+
+
+    
   </script>
   
 </body>
