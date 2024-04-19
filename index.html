@@ -187,10 +187,12 @@ console.log(queryString); // ?ref=123
 const urlParams = new URLSearchParams(queryString);
 const ref = urlParams.get('ref');
 console.log(ref); // 123
-const input = document.getElementById('SubscriberForm-Customz-52XpaiU49AuSxfYVQsyjzH');
-input.value = ref || '10XNetworkState';
 
-
+// waiting for SendX popup to load before I can modify the FORM INPUT element 
+setTimeout(function () {
+  const input = document.getElementById('SubscriberForm-Customz-52XpaiU49AuSxfYVQsyjzH');
+  input.value = ref || '10XNetworkState';
+}, 3000); // 3 seconds
     
   </script>
   
