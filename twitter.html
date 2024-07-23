@@ -6,25 +6,19 @@
   <meta name="viewport" content="width=device-width">
   <title>Tweet</title>
   <style>
-    html {
-      height: 100%;
-      width: 100%;
-    }
-
-    body {
-      margin: 0;
-    }
-
-    .twitter-tweet {
-      margin: 0 !important;
-    }
+    html {height: 100%;width: 100%;}
+    body {margin: 0;}
+    .twitter-tweet {margin: 0 !important;}
+    #wrapper {display: inline-block;}
   </style>
 </head>
 
 <body>
-  <blockquote class="twitter-tweet">
-    <a id="tweet" href=""></a>
-  </blockquote>
+  <div id="wrapper">
+    <blockquote class="twitter-tweet">
+      <a id="tweet" href=""></a>
+    </blockquote>
+  </div>
   <script>
     var link = document.getElementById("tweet");
     const queryString = window.location.search;
