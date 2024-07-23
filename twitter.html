@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Tweet</title>
+  <style>
+    html {
+      height: 100%;
+      width: 100%;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    .twitter-tweet {
+      margin: 0 !important;
+    }
+  </style>
+</head>
+
+<body>
+  <blockquote class="twitter-tweet">
+    <a id="tweet" href=""></a>
+  </blockquote>
+  <script>
+    var link = document.getElementById("tweet");
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const tweet_url = urlParams.get('tweet')
+    link.setAttribute('href', tweet_url);
+  </script>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</body>
+
+</html>
