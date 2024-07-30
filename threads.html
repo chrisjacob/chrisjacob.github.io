@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Threads</title>
+  <style>
+    html {
+      height: 100%;
+      width: 100%;
+    }
+
+    body {
+      margin: 0;
+      background-color: #fff;
+    }
+
+    #wrapper {
+      display: inline-block;
+      width: 540px;
+    }
+
+    #wrapper iframe {
+      margin: 0 !important;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="wrapper">
+    <!-- id="embed" -->
+    <blockquote id="embed" class="text-post-media" data-text-post-permalink="" data-text-post-version="0" 
+      style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:540px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+    </blockquote>
+  </div>
+
+  <script>
+    // ?url=https://www.threads.net/@zuck/post/C9xxwZZyx5B
+    var link = document.getElementById("embed");
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    var param_url = urlParams.get('url'); 
+    link.setAttribute('data-text-post-permalink', param_url);
+  </script>
+  <script async src="https://www.threads.net/embed.js"></script>
+
+</body>
+
+</html>
