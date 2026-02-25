@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)https://matrixscreensaver.online/matrix/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Matrix digital rain</title>
+		
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+		<style>
+			@supports (padding-top: env(safe-area-inset-top)) {
+				body {
+					padding: 0;
+					height: calc(100% + env(safe-area-inset-top));
+				}
+			}
+			body {
+				background: black;
+				overflow: hidden;
+				margin: 0;
+
+				font-family: monospace;
+				font-size: 2em;
+				text-align: center;
+			}
+
+			canvas {
+				width: 100vw;
+				height: 100vh;
+			}
+
+			p {
+				color: hsl(108, 90%, 70%);
+				text-shadow: hsl(108, 90%, 40%) 1px 0 10px;
+			}
+
+			.notice {
+				margin-top: 10em;
+				animation: fadeInAnimation ease 3s;
+				animation-iteration-count: 1;
+				animation-fill-mode: forwards;
+			}
+
+			@keyframes fadeInAnimation {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+
+			.pill {
+				display: inline-block;
+				background: gray;
+				border: 0.3em solid lightgray;
+				font-size: 1rem;
+				font-family: monospace;
+				color: white;
+				padding: 0.5em 1em;
+				border-radius: 2em;
+				min-width: 6rem;
+				margin: 3em;
+				text-decoration: none;
+				cursor: pointer;
+				text-transform: uppercase;
+				font-weight: bold;
+			}
+
+			.blue {
+				background: linear-gradient(skyblue, blue, black, black, darkblue);
+				border-color: darkblue;
+				color: lightblue;
+			}
+
+			.blue:hover {
+				border-color: blue;
+				color: white;
+			}
+
+			.red {
+				background: linear-gradient(lightpink, crimson, black, black, darkred);
+				border-color: darkred;
+				color: lightpink;
+			}
+
+			.red:hover {
+				border-color: crimson;
+				color: white;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			This is an implementation of the green code seen in The Matrix film and video game franchise.
+			This project demonstrates five concepts:
+					1. Drawing to floating point frame buffer objects, or 'FBO's,
+						 for performing computation and post-processing
+					2. GPU-side computation, with fragment shaders
+						 updating two alternating FBOs
+					3. Rendering crisp "vector" graphics, with a multiple-channel
+						 signed distance field (or 'MSDF')
+					4. Creating a blur/bloom effect from a texture pyramid
+					5. Color mapping with noise, to hide banding
+
+			For more information, please visit: https://github.com/Rezmason/matrix
+		 -->
+		<script type="module" src="./main.js.download"></script>
+	<script defer="" src="./vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;8d197ff6d6a44c3da94f28c5e97990e8&quot;,&quot;r&quot;:1,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
+
+
+<canvas width="1426" height="507"></canvas><script src="./regl.min.js.download"></script><script src="./gl-matrix.js.download"></script></body></html>
